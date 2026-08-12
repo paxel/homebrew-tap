@@ -5,37 +5,45 @@
 class Wiptracker < Formula
   desc "One-line always-on-top bar showing the task you are focused on right now"
   homepage "https://github.com/paxel/wipTracker"
-  version "0.2.0"
+  version "0.3.0"
   license any_of: ["MIT", "Apache-2.0"]
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/paxel/wipTracker/releases/download/v0.2.0/wiptracker-0.2.0-macos-arm64.tar.gz"
-      sha256 "a3aaec54a07cb1b2c3337017aa61f8b8c6a1f1fa278a3525b85c4e1cae705370"
+      url "https://github.com/paxel/wipTracker/releases/download/v0.3.0/wiptracker-0.3.0-macos-arm64.tar.gz"
+      sha256 "0e6ffffff36760afd553c77528bb32799a61b571abfdb6e8a6509cb15216a913"
     else
-      url "https://github.com/paxel/wipTracker/releases/download/v0.2.0/wiptracker-0.2.0-macos-x86_64.tar.gz"
-      sha256 "83c5df8537c16a7aa81213caccec8e10ca6c85484aca03f9be2e74d4bf03eccd"
+      url "https://github.com/paxel/wipTracker/releases/download/v0.3.0/wiptracker-0.3.0-macos-x86_64.tar.gz"
+      sha256 "109a99f3e03cd0d1877f9783e0a9fb8cead553e308ce09f3bfb1a0b4db3115b8"
     end
   end
 
   on_linux do
-    url "https://github.com/paxel/wipTracker/releases/download/v0.2.0/wiptracker-0.2.0-linux-x86_64.tar.gz"
-    sha256 "b4c083fe3ea42c5d0c4c86e8a04f9ad991fef3184312885f14138fb58556447d"
+    url "https://github.com/paxel/wipTracker/releases/download/v0.3.0/wiptracker-0.3.0-linux-x86_64.tar.gz"
+    sha256 "268ffe73ba22b10d6fb0b5a235903f4c5fc133c3abc30b68a5d9106747822d0d"
   end
 
   def install
     bin.install "wiptracker"
+    # On Linux the desktop entry and the icon are what give the window a taskbar icon:
+    # Wayland has no protocol for a client to set its own, so the compositor matches the
+    # window's app_id to wiptracker.desktop instead. Homebrew's share directory is on
+    # XDG_DATA_DIRS, so installing them here is enough.
+    return unless OS.linux?
+
+    (share/"applications").install "wiptracker.desktop"
+    (share/"icons/hicolor/512x512/apps").install "icon.png" => "wiptracker.png"
   end
 
   def caveats
     <<~EOS
       WipTracker is a desktop bar, not a command-line tool: run `wiptracker` from a
-      graphical session. The release also ships WipTracker.app for the Dock; download it
-      from the GitHub release page if you prefer that.
+      graphical session. The macOS release also ships WipTracker.app for the Dock;
+      download the .dmg from the GitHub release page if you prefer that.
 
-      On Wayland the bar cannot stay on top and is started with a window frame, because
-      no Wayland protocol exists for either. Use your compositor's own "keep above"
-      window rule.
+      On Wayland the bar cannot stay on top and starts with a window frame, because no
+      Wayland protocol exists for either. Use your compositor's own "keep above" window
+      rule. The taskbar icon is installed with this formula.
     EOS
   end
 
