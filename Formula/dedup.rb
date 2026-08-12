@@ -11,16 +11,16 @@ class Dedup < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/paxel/dedup-rs/releases/download/v0.1.2/dedup-0.1.2-macos-arm64.tar.gz"
-      sha256 "1324338b0c7b3d8aaa74de5d5723dc52b2cfcb1138f92394b5baa346c3b00570"
+      sha256 "361ee291909e2b119480afb4edaf0aa8cf621cb4b1024b233737e6da4a96d4d0"
     else
       url "https://github.com/paxel/dedup-rs/releases/download/v0.1.2/dedup-0.1.2-macos-x86_64.tar.gz"
-      sha256 "f1fc5e811109c66145ea5095efc4b27a619f2d9202c4f2107e135b2c13380cd1"
+      sha256 "04f47d678ed2d749ce9865cc99844134b1fbd8467b53b0215590e35301e044ab"
     end
   end
 
   on_linux do
     url "https://github.com/paxel/dedup-rs/releases/download/v0.1.2/dedup-0.1.2-linux-x86_64.tar.gz"
-    sha256 "2162ee5fdd640a6bd9cc5090179bfec99f1bc0711d4ec1478d1bf28e984603d4"
+    sha256 "7aff70b8c6f93778b73fd7cd206badec4a5f0c088e0047b4a9ab638788a701ab"
   end
 
   def install
