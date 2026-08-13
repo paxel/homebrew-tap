@@ -5,22 +5,22 @@
 class Wiptracker < Formula
   desc "One-line always-on-top bar showing the task you are focused on right now"
   homepage "https://github.com/paxel/wipTracker"
-  version "0.3.0"
+  version "0.4.0"
   license any_of: ["MIT", "Apache-2.0"]
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/paxel/wipTracker/releases/download/v0.3.0/wiptracker-0.3.0-macos-arm64.tar.gz"
-      sha256 "0e6ffffff36760afd553c77528bb32799a61b571abfdb6e8a6509cb15216a913"
+      url "https://github.com/paxel/wipTracker/releases/download/v0.4.0/wiptracker-0.4.0-macos-arm64.tar.gz"
+      sha256 "1deb030cdc219472501433f797cf8387b5cd8afcbbdc1fc850d2f2baf5e652f2"
     else
-      url "https://github.com/paxel/wipTracker/releases/download/v0.3.0/wiptracker-0.3.0-macos-x86_64.tar.gz"
-      sha256 "109a99f3e03cd0d1877f9783e0a9fb8cead553e308ce09f3bfb1a0b4db3115b8"
+      url "https://github.com/paxel/wipTracker/releases/download/v0.4.0/wiptracker-0.4.0-macos-x86_64.tar.gz"
+      sha256 "1b6fb642446c6b1b14c1726d0446727a631a8c7819aa9ee4cc3c8a844a6eacaa"
     end
   end
 
   on_linux do
-    url "https://github.com/paxel/wipTracker/releases/download/v0.3.0/wiptracker-0.3.0-linux-x86_64.tar.gz"
-    sha256 "268ffe73ba22b10d6fb0b5a235903f4c5fc133c3abc30b68a5d9106747822d0d"
+    url "https://github.com/paxel/wipTracker/releases/download/v0.4.0/wiptracker-0.4.0-linux-x86_64.tar.gz"
+    sha256 "4066b9ac19d6b50fdf2d543216f8146b1297338f371b5f1d496ada461f450419"
   end
 
   def install
@@ -33,6 +33,14 @@ class Wiptracker < Formula
 
     (share/"applications").install "wiptracker.desktop"
     (share/"icons/hicolor/512x512/apps").install "icon.png" => "wiptracker.png"
+    # The smaller sizes matter: a menu drawing at 32 pixels would otherwise downsample the
+    # 512 pixel one.
+    [32, 48, 64, 128, 256].each do |size|
+      source = "icon-#{size}.png"
+      next unless File.exist?(source)
+
+      (share/"icons/hicolor/#{size}x#{size}/apps").install source => "wiptracker.png"
+    end
   end
 
   def caveats
