@@ -5,22 +5,22 @@
 class Dedup < Formula
   desc "Forensic data-inheritance triage: dedupe, diff and browse file piles"
   homepage "https://github.com/paxel/dedup-rs"
-  version "0.2.0"
+  version "0.2.1"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/paxel/dedup-rs/releases/download/v0.2.0/dedup-0.2.0-macos-arm64.tar.gz"
-      sha256 "888a1531e34d274bede600c80589f9476ca159b2a6d5d496e4f75a75d5d309ac"
+      url "https://github.com/paxel/dedup-rs/releases/download/v0.2.1/dedup-0.2.1-macos-arm64.tar.gz"
+      sha256 "d4da2813491e37a4e5ff8a106342a7140cb279c455acaec4f68ac839f16064b4"
     else
-      url "https://github.com/paxel/dedup-rs/releases/download/v0.2.0/dedup-0.2.0-macos-x86_64.tar.gz"
-      sha256 "72b5deba8da70e638dc5a81bc521b81efc1fcf023bb6c0844c604249d8bd734e"
+      url "https://github.com/paxel/dedup-rs/releases/download/v0.2.1/dedup-0.2.1-macos-x86_64.tar.gz"
+      sha256 "f3079d28b021a5a8b5fc882af73c57d1b7eeb27327d2555f0f3928acac7de9d8"
     end
   end
 
   on_linux do
-    url "https://github.com/paxel/dedup-rs/releases/download/v0.2.0/dedup-0.2.0-linux-x86_64.tar.gz"
-    sha256 "545a00f3c96435d0a7ec146411c4529e438c4025f3963e41f20e1ce81c27f2d2"
+    url "https://github.com/paxel/dedup-rs/releases/download/v0.2.1/dedup-0.2.1-linux-x86_64.tar.gz"
+    sha256 "4d12c5cbedbb30632ef2999dae78ee1fc132b3ac826d0092025f7430f1a4dd10"
   end
 
   def install
