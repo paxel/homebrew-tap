@@ -5,22 +5,22 @@
 class Wiptracker < Formula
   desc "One-line always-on-top bar showing the task you are focused on right now"
   homepage "https://github.com/paxel/wipTracker"
-  version "0.5.0"
+  version "0.6.0"
   license any_of: ["MIT", "Apache-2.0"]
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/paxel/wipTracker/releases/download/v0.5.0/wiptracker-0.5.0-macos-arm64.tar.gz"
-      sha256 "9e5efde753d763e6d8169ee3cb3cfb01dbe2270450c29cd4d8f095126606f158"
+      url "https://github.com/paxel/wipTracker/releases/download/v0.6.0/wiptracker-0.6.0-macos-arm64.tar.gz"
+      sha256 "793105679f36067c520af01a0427862d208783160fb6e3c085c75e88519d8c27"
     else
-      url "https://github.com/paxel/wipTracker/releases/download/v0.5.0/wiptracker-0.5.0-macos-x86_64.tar.gz"
-      sha256 "625642869aeef118c06008f3845536160ea8ca11cd245df58e1dadb7e339dacd"
+      url "https://github.com/paxel/wipTracker/releases/download/v0.6.0/wiptracker-0.6.0-macos-x86_64.tar.gz"
+      sha256 "0909d6fa0b37e5d390b365abecfe06754e382f563d8397acf988a6e2b1fc6e6b"
     end
   end
 
   on_linux do
-    url "https://github.com/paxel/wipTracker/releases/download/v0.5.0/wiptracker-0.5.0-linux-x86_64.tar.gz"
-    sha256 "725879858dbcaacb9b66a16a555c3ef4fcd4be45ac1fbf3f47dc2bc48a2fcc0e"
+    url "https://github.com/paxel/wipTracker/releases/download/v0.6.0/wiptracker-0.6.0-linux-x86_64.tar.gz"
+    sha256 "d3d1982f83a6cfbedf575eeae74a8b1bff9513e99d804621faf07f775badaa2c"
   end
 
   def install
@@ -50,13 +50,16 @@ class Wiptracker < Formula
     SH
     (bin/"wiptracker-install-icon").chmod 0755
 
-    # Also in Homebrew's own share, for the sessions that do read it.
+    # Also in Homebrew's own share, for the sessions that do read it. The sizes are read
+    # off the files, so the list lives only in make_icon.py; icon.png is the 512 pixel
+    # one, and 1024 belongs to the macOS bundle.
     (share/"applications").mkpath
     cp libexec/"wiptracker.desktop", share/"applications/wiptracker.desktop"
-    [32, 48, 64, 128, 256, 512].each do |size|
-      source = size == 512 ? libexec/"icon.png" : libexec/"icon-#{size}.png"
-      next unless source.exist?
-
+    sized = Pathname.glob(libexec/"icon-*.png")
+                    .map { |source| [source.basename(".png").to_s.delete_prefix("icon-").to_i, source] }
+                    .reject { |size, _| size == 1024 }
+    sized << [512, libexec/"icon.png"] if (libexec/"icon.png").exist?
+    sized.each do |size, source|
       directory = share/"icons/hicolor/#{size}x#{size}/apps"
       directory.mkpath
       cp source, directory/"wiptracker.png"
