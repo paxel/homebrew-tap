@@ -5,22 +5,22 @@
 class Wiptracker < Formula
   desc "One-line always-on-top bar showing the task you are focused on right now"
   homepage "https://github.com/paxel/wipTracker"
-  version "0.6.0"
+  version "0.7.0"
   license any_of: ["MIT", "Apache-2.0"]
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/paxel/wipTracker/releases/download/v0.6.0/wiptracker-0.6.0-macos-arm64.tar.gz"
-      sha256 "793105679f36067c520af01a0427862d208783160fb6e3c085c75e88519d8c27"
+      url "https://github.com/paxel/wipTracker/releases/download/v0.7.0/wiptracker-0.7.0-macos-arm64.tar.gz"
+      sha256 "af1e056083d3d84668f7a13d8e2a21dda2793a2fe0d58f8dafd2ca247e1d4ea1"
     else
-      url "https://github.com/paxel/wipTracker/releases/download/v0.6.0/wiptracker-0.6.0-macos-x86_64.tar.gz"
-      sha256 "0909d6fa0b37e5d390b365abecfe06754e382f563d8397acf988a6e2b1fc6e6b"
+      url "https://github.com/paxel/wipTracker/releases/download/v0.7.0/wiptracker-0.7.0-macos-x86_64.tar.gz"
+      sha256 "4b2ba7d0f1c0502cf71098f1167eff6e627825a30452b5b1a97f8e6e1c0f31f3"
     end
   end
 
   on_linux do
-    url "https://github.com/paxel/wipTracker/releases/download/v0.6.0/wiptracker-0.6.0-linux-x86_64.tar.gz"
-    sha256 "d3d1982f83a6cfbedf575eeae74a8b1bff9513e99d804621faf07f775badaa2c"
+    url "https://github.com/paxel/wipTracker/releases/download/v0.7.0/wiptracker-0.7.0-linux-x86_64.tar.gz"
+    sha256 "ddb2bec8e87ebdbfd6bd780f2fdb602b22d1a71aad5d16dbec393b3b17223b2d"
   end
 
   def install
