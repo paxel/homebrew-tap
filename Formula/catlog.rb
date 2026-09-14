@@ -1,18 +1,18 @@
 class Catlog < Formula
   desc "Local-first catalog for foster cats - no server, no account"
   homepage "https://github.com/paxel/catlog"
-  version "1.3.2"
+  version "1.3.3"
   license any_of: ["Apache-2.0", "MIT"]
 
   depends_on :linux
 
   on_arm do
     url "https://github.com/paxel/catlog/releases/download/v#{version}/catlog-#{version}-linux-arm64.tar.gz"
-    sha256 "a94a7cfcf9c137a170e0f88ce1f986385e9a083ea2ade80225b0cde30e2f0c5a"
+    sha256 "c9adaf1b8c35f4709b68cfce74a980b1d6d2698fa0efd44a3754ecac64b8f9aa"
   end
   on_intel do
     url "https://github.com/paxel/catlog/releases/download/v#{version}/catlog-#{version}-linux-x86_64.tar.gz"
-    sha256 "9d2e969db53786a1dd3b6c9c9c70072a7217433bead67d16358f0514839de19d"
+    sha256 "7a35ed8c901d67cf84ce5988f2ca486fa197646cf477f759df7294719452faed"
   end
 
   def install
