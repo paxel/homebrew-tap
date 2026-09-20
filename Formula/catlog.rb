@@ -1,18 +1,18 @@
 class Catlog < Formula
   desc "Local-first catalog for foster cats - no server, no account"
   homepage "https://github.com/paxel/catlog"
-  version "1.4.0"
+  version "2.0.0"
   license any_of: ["Apache-2.0", "MIT"]
 
   depends_on :linux
 
   on_arm do
     url "https://github.com/paxel/catlog/releases/download/v#{version}/catlog-#{version}-linux-arm64.tar.gz"
-    sha256 "eb7c623e5d71a09593a457a49329bb34833e3bb4542b3c1fdc3baf5d8c3b065b"
+    sha256 "547ea6d65c51fb8535b6a674d4d872a9e30740eb47dab4ba226510c2aea5dbc9"
   end
   on_intel do
     url "https://github.com/paxel/catlog/releases/download/v#{version}/catlog-#{version}-linux-x86_64.tar.gz"
-    sha256 "846b625a9d8ea417423050d247d90e9bd2896c074a9e6c44ffe9b8945bbebabd"
+    sha256 "af66a1974aa70854ed95f6c25ae399987514745e2b3f83384beaae264c078c6e"
   end
 
   def install
@@ -51,8 +51,9 @@ class Catlog < Formula
 
   def caveats
     <<~EOS
-      Needs the GTK 3 runtime from your distribution
-      (e.g. Debian/Ubuntu: sudo apt install libgtk-3-0).
+      Needs the usual desktop libraries from your distribution: X11 or
+      Wayland with libxkbcommon, and ALSA for the cheers
+      (e.g. Debian/Ubuntu: sudo apt install libxkbcommon0 libasound2t64).
 
       To get cat(a)log into your application menu, where it can also be pinned, and to
       open .catsync files with it, run once:
