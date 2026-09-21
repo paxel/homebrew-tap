@@ -1,18 +1,18 @@
 class Catlog < Formula
   desc "Local-first catalog for foster cats - no server, no account"
   homepage "https://github.com/paxel/catlog"
-  version "2.0.0"
+  version "2.0.1"
   license any_of: ["Apache-2.0", "MIT"]
 
   depends_on :linux
 
   on_arm do
     url "https://github.com/paxel/catlog/releases/download/v#{version}/catlog-#{version}-linux-arm64.tar.gz"
-    sha256 "547ea6d65c51fb8535b6a674d4d872a9e30740eb47dab4ba226510c2aea5dbc9"
+    sha256 "169cfa30a28277df8f9588a483dbf900970e59e3f6a4ccd28d8742defb85b433"
   end
   on_intel do
     url "https://github.com/paxel/catlog/releases/download/v#{version}/catlog-#{version}-linux-x86_64.tar.gz"
-    sha256 "af66a1974aa70854ed95f6c25ae399987514745e2b3f83384beaae264c078c6e"
+    sha256 "d5cd3447dc260d188cc2f64f810cbdb66567f6b623cb1c9534a23fb4c844fba2"
   end
 
   def install
@@ -24,7 +24,7 @@ class Catlog < Formula
     # session's PATH or XDG_DATA_DIRS: "Exec=catlog" would fail to launch and
     # "Icon=catlog" would find nothing to draw.
     icon = "#{opt_prefix}/share/icons/hicolor/scalable/apps/catlog.svg"
-    inreplace libexec/"catlog.desktop" do |entry|
+    inreplace libexec/"io.github.paxel.catlog.desktop" do |entry|
       entry.gsub! "Exec=catlog", "Exec=#{opt_bin}/catlog"
       entry.gsub! "Icon=catlog", "Icon=#{icon}"
     end
@@ -40,7 +40,7 @@ class Catlog < Formula
 
     # Also in Homebrew's own share, for the sessions that do read it.
     (share/"applications").mkpath
-    cp libexec/"catlog.desktop", share/"applications/catlog.desktop"
+    cp libexec/"io.github.paxel.catlog.desktop", share/"applications/io.github.paxel.catlog.desktop"
     (share/"mime/packages").mkpath
     cp libexec/"catlog-mime.xml", share/"mime/packages/catlog-mime.xml"
     (share/"icons/hicolor/scalable/apps").mkpath
@@ -49,21 +49,34 @@ class Catlog < Formula
     cp libexec/"icon.png", share/"icons/hicolor/1024x1024/apps/catlog.png"
   end
 
+  # Homebrew's own share directory is not on a desktop session's XDG_DATA_DIRS, so the
+  # entry above alone stays invisible to menus: the app could not be started at all.
+  # Homebrew on Linux runs this step outside a sandbox, so the launcher entry, the icons
+  # and the file type go into ~/.local/share here, which every session reads. Homebrew
+  # scrubs the environment first, so a custom XDG_DATA_HOME is not seen here; the
+  # caveat names the helper for that case. A home that cannot be written (a container,
+  # a bottle build) must not fail the install over a menu entry.
+  def post_install
+    system libexec/"install-icon.sh"
+  rescue ErrorDuringExecution
+    opoo "The launcher entry could not be installed; run catlog-install-icon yourself."
+  end
+
   def caveats
     <<~EOS
       Needs the usual desktop libraries from your distribution: X11 or
       Wayland with libxkbcommon, and ALSA for the cheers
       (e.g. Debian/Ubuntu: sudo apt install libxkbcommon0 libasound2t64).
 
-      To get cat(a)log into your application menu, where it can also be pinned, and to
-      open .catsync files with it, run once:
+      The install puts cat(a)log into your application menu, where it can also be
+      pinned, and registers .catsync files, under ~/.local/share. If it is missing
+      there, for another user on this machine, or with a custom XDG_DATA_HOME, run:
 
         catlog-install-icon
 
-      That copies the launcher entry, the icons and the file type into ~/.local/share,
-      which every desktop session reads. Homebrew's own share directory is not on a
-      session's XDG_DATA_DIRS, so an entry installed there alone stays invisible to
-      menus.
+      Before brew uninstall, to take the menu entry out again:
+
+        catlog-install-icon --uninstall
     EOS
   end
 
