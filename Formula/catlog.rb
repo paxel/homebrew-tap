@@ -1,32 +1,30 @@
 class Catlog < Formula
   desc "Local-first catalog for foster cats - no server, no account"
   homepage "https://github.com/paxel/catlog"
-  version "2.0.1"
+  version "2.0.2"
   license any_of: ["Apache-2.0", "MIT"]
 
   depends_on :linux
 
   on_arm do
     url "https://github.com/paxel/catlog/releases/download/v#{version}/catlog-#{version}-linux-arm64.tar.gz"
-    sha256 "169cfa30a28277df8f9588a483dbf900970e59e3f6a4ccd28d8742defb85b433"
+    sha256 "c1615d006e27a66b87541250b3d1ca84e8e1b7844f0b056d6ae22320409277b0"
   end
   on_intel do
     url "https://github.com/paxel/catlog/releases/download/v#{version}/catlog-#{version}-linux-x86_64.tar.gz"
-    sha256 "d5cd3447dc260d188cc2f64f810cbdb66567f6b623cb1c9534a23fb4c844fba2"
+    sha256 "d299d06011cfec1ab80c1108eb79294751a0da1796c57ef38e7e9350fa95ec3c"
   end
 
   def install
     libexec.install Dir["*"]
     bin.write_exec_script libexec/"catlog"
 
-    # Absolute paths, not bare names. A desktop session does not read Homebrew's shell
-    # environment, so neither its bin directory nor its icon theme directory is on the
-    # session's PATH or XDG_DATA_DIRS: "Exec=catlog" would fail to launch and
-    # "Icon=catlog" would find nothing to draw.
-    icon = "#{opt_prefix}/share/icons/hicolor/scalable/apps/catlog.svg"
+    # An absolute Exec: a desktop session does not read Homebrew's shell environment,
+    # so its bin directory is not on the session's PATH. The icon stays a theme name,
+    # "catlog": the install step below puts the PNG into ~/.local/share/icons, where
+    # every desktop looks, and the desk itself keeps it there on every start.
     inreplace libexec/"io.github.paxel.catlog.desktop" do |entry|
       entry.gsub! "Exec=catlog", "Exec=#{opt_bin}/catlog"
-      entry.gsub! "Icon=catlog", "Icon=#{icon}"
     end
 
     # The helper and everything it copies live together, so it finds the icons next to
@@ -43,10 +41,10 @@ class Catlog < Formula
     cp libexec/"io.github.paxel.catlog.desktop", share/"applications/io.github.paxel.catlog.desktop"
     (share/"mime/packages").mkpath
     cp libexec/"catlog-mime.xml", share/"mime/packages/catlog-mime.xml"
+    (share/"icons/hicolor/256x256/apps").mkpath
+    cp libexec/"icon_256.png", share/"icons/hicolor/256x256/apps/catlog.png"
     (share/"icons/hicolor/scalable/apps").mkpath
     cp libexec/"icon.svg", share/"icons/hicolor/scalable/apps/catlog.svg"
-    (share/"icons/hicolor/1024x1024/apps").mkpath
-    cp libexec/"icon.png", share/"icons/hicolor/1024x1024/apps/catlog.png"
   end
 
   # Homebrew's own share directory is not on a desktop session's XDG_DATA_DIRS, so the
