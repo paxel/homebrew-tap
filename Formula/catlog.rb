@@ -1,18 +1,18 @@
 class Catlog < Formula
   desc "Local-first catalog for foster cats - no server, no account"
   homepage "https://github.com/paxel/catlog"
-  version "2.0.6"
+  version "2.0.7"
   license any_of: ["Apache-2.0", "MIT"]
 
   depends_on :linux
 
   on_arm do
     url "https://github.com/paxel/catlog/releases/download/v#{version}/catlog-#{version}-linux-arm64.tar.gz"
-    sha256 "71b7558c61936acf05e48410012166dd3f6197108c88790974db109291263c80"
+    sha256 "07d6a680a9f279c16f5f2a0a9e83b94f19e4edda4cfc24b4af8988f12de8bf88"
   end
   on_intel do
     url "https://github.com/paxel/catlog/releases/download/v#{version}/catlog-#{version}-linux-x86_64.tar.gz"
-    sha256 "013bd629c865b5cd492ac41733fb777445d0fb4bdb9d754165d1ab33b893486d"
+    sha256 "317b47023c2a0987636439c2e1690dd257e2a6b259fabfe168814e672445afb8"
   end
 
   def install
@@ -43,8 +43,6 @@ class Catlog < Formula
     cp libexec/"catlog-mime.xml", share/"mime/packages/catlog-mime.xml"
     (share/"icons/hicolor/256x256/apps").mkpath
     cp libexec/"icon_256.png", share/"icons/hicolor/256x256/apps/catlog.png"
-    (share/"icons/hicolor/scalable/apps").mkpath
-    cp libexec/"icon.svg", share/"icons/hicolor/scalable/apps/catlog.svg"
   end
 
   # Homebrew's own share directory is not on a desktop session's XDG_DATA_DIRS, so the
