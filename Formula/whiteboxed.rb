@@ -4,22 +4,22 @@
 class Whiteboxed < Formula
   desc "WYSIWYG editor for arc42 building-block views"
   homepage "https://github.com/paxel/whiteboxed"
-  version "0.1.0"
+  version "0.2.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/paxel/whiteboxed/releases/download/v0.1.0/whiteboxed-0.1.0-macos-arm64.tar.gz"
-      sha256 "7106bc636941b0882d0b20dc133ac23a52bef3e03ddd4df425f2ea0fdc8a7280"
+      url "https://github.com/paxel/whiteboxed/releases/download/v0.2.0/whiteboxed-0.2.0-macos-arm64.tar.gz"
+      sha256 "6e1111b7fadb3a4d7d23317c514469e19fd72989d159e9c3d813057c71862d63"
     else
-      url "https://github.com/paxel/whiteboxed/releases/download/v0.1.0/whiteboxed-0.1.0-macos-x86_64.tar.gz"
-      sha256 "f84176948bb1687419b5d97e1867a4b144b5fe0bbe60fc41e8c6fa178bcc6c1f"
+      url "https://github.com/paxel/whiteboxed/releases/download/v0.2.0/whiteboxed-0.2.0-macos-x86_64.tar.gz"
+      sha256 "54ff5a092ad96f350897201099a3a361c93460cef0c0a9498ea1d1871d6dc56e"
     end
   end
 
   on_linux do
-    url "https://github.com/paxel/whiteboxed/releases/download/v0.1.0/whiteboxed-0.1.0-linux-x86_64.tar.gz"
-    sha256 "77e3ff1e4518d25db8f697813d2dfec8d3e728146db25e1aaae218bc6f440e65"
+    url "https://github.com/paxel/whiteboxed/releases/download/v0.2.0/whiteboxed-0.2.0-linux-x86_64.tar.gz"
+    sha256 "e7d4368a1695b8e2cee73c67eaa595f05505ae4b91c66d78af2982676ea3a801"
   end
 
   def install
