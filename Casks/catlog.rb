@@ -1,9 +1,9 @@
 cask "catlog" do
-  version "2.4.0"
+  version "2.4.1"
 
   arch arm: "arm64", intel: "x86_64"
-  sha256 arm:   "55936618ddb32ae221d984f3c6ceaf3d6f80c3c9a4ffa855f11cfbe714f21c75",
-         intel: "688eb627b0822ae697891e72a24d0dcf36043d2ae867cf40ea827c100ce24b3b"
+  sha256 arm:   "e9eab1ac18815c55c4c049eba35498ef1048a64b437db60e8c70ef467dfa98e6",
+         intel: "9807f9f43b9f48878725709c36adf8911eca0fe4acbaaf615958fb49dccd1176"
 
   url "https://github.com/paxel/catlog/releases/download/v#{version}/catlog-#{version}-macos-#{arch}.dmg"
   name "cat(a)log"
