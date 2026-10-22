@@ -1,18 +1,18 @@
 class Catlog < Formula
   desc "Local-first catalog for foster cats - no server, no account"
   homepage "https://github.com/paxel/catlog"
-  version "2.4.1"
+  version "2.5.0"
   license any_of: ["Apache-2.0", "MIT"]
 
   depends_on :linux
 
   on_arm do
     url "https://github.com/paxel/catlog/releases/download/v#{version}/catlog-#{version}-linux-arm64.tar.gz"
-    sha256 "bd630ce7ef2704a92a42de423a0b12d166acbc3483f26f0e1985393bbc46c2b5"
+    sha256 "dff2322f115eb365b1cc4f278c3a2b67cb004a82499d5a3230fee15e0c644764"
   end
   on_intel do
     url "https://github.com/paxel/catlog/releases/download/v#{version}/catlog-#{version}-linux-x86_64.tar.gz"
-    sha256 "72f1b4a614e45d42f9c4a8885f6c455e90bd35467acbf31bfc68fe27821e3208"
+    sha256 "42464a9a984a9aeaa5245c4d6fbbb921361ece949921c32662f4d3e1b04fade4"
   end
 
   def install
@@ -47,15 +47,15 @@ class Catlog < Formula
 
   # Homebrew's own share directory is not on a desktop session's XDG_DATA_DIRS, so the
   # entry above alone stays invisible to menus: the app could not be started at all.
-  # Homebrew on Linux runs this step outside a sandbox, so the launcher entry, the icons
-  # and the file type go into ~/.local/share here, which every session reads. Homebrew
-  # scrubs the environment first, so a custom XDG_DATA_HOME is not seen here; the
-  # caveat names the helper for that case. A home that cannot be written (a container,
-  # a bottle build) must not fail the install over a menu entry.
-  def post_install
-    system libexec/"install-icon.sh"
-  rescue ErrorDuringExecution
-    opoo "The launcher entry could not be installed; run catlog-install-icon yourself."
+  # This step puts the launcher entry, the icons and the file type into ~/.local/share,
+  # which every session reads. Declared steps replace the post_install method since
+  # Homebrew 7.0 (the method stops loading on 2027-12-11). Homebrew scrubs the
+  # environment first, so a custom XDG_DATA_HOME is not seen here; the caveat names the
+  # helper for that case. A home that cannot be written (a container, a bottle build, a
+  # post-install sandbox) must not fail the install over a menu entry: the desk writes
+  # the same entry itself on its first start.
+  post_install_steps do
+    run "install-icon.sh", base: :libexec, must_succeed: false
   end
 
   def caveats
