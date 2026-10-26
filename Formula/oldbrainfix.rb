@@ -8,11 +8,11 @@ class Oldbrainfix < Formula
 
   on_arm do
     url "https://github.com/paxel/oldbrainfix/releases/download/v#{version}/oldbrainfix-#{version}-linux-arm64.tar.gz"
-    sha256 "a934ec5d4654fc58fe382e9061e77d025ee7d707f2d9a3e21f8921a47ee53379"
+    sha256 "3c8ca823c432ed29de57a69479a2e9c681840d2ed96b95223b5b9e51cca63281"
   end
   on_intel do
     url "https://github.com/paxel/oldbrainfix/releases/download/v#{version}/oldbrainfix-#{version}-linux-x86_64.tar.gz"
-    sha256 "7a5bdde6714eb3938c25f956dc03e176a678c138182d02b34aacf952d076f13a"
+    sha256 "804aa37d340c0cdb2f4821245dd538201acaf8edf3cc7a7bc0db27983b3fe5d5"
   end
 
   def install
