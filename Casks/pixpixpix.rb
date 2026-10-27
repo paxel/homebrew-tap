@@ -1,6 +1,6 @@
 cask "pixpixpix" do
   version "0.2.0"
-  sha256 "f52a03a14c274792406bbe9f0c3b1197529838db34a471c4c8e33eb1c111a127"
+  sha256 "ab5a5a145b6545a9358605bee5cadb05e7bfcec27cffeb68fac2ddd02fb0f117"
 
   url "https://github.com/paxel/pixpixpix/releases/download/v#{version}/pixpixpix-#{version}-macos-arm64-app.zip"
   name "pixpixpix"

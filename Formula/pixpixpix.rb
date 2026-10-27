@@ -8,11 +8,11 @@ class Pixpixpix < Formula
 
   on_arm do
     url "https://github.com/paxel/pixpixpix/releases/download/v#{version}/pixpixpix-#{version}-linux-aarch64.tar.gz"
-    sha256 "bf2af3eb005988620d0bb521c14556d123fab072cbe8169e9b0741e482333c17"
+    sha256 "f59885c1514be97c42b964be77d9f8e9e5a466a966a711dc6dcd9f44a165bf69"
   end
   on_intel do
     url "https://github.com/paxel/pixpixpix/releases/download/v#{version}/pixpixpix-#{version}-linux-x86_64.tar.gz"
-    sha256 "428530ef2d63c8a2a8a1baa62d53c4ec8a10dd5d20fbeb701e7c49f657692cc4"
+    sha256 "10e0038fbd309f8c16c9e25c86d330a47c1e95ad4ee9387d393e29cbcde3cda2"
   end
 
   def install
