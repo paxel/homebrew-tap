@@ -1,13 +1,13 @@
 cask "oldbrainfix" do
-  version "0.1.1"
+  version "0.2.0"
 
   arch arm: "arm64", intel: "x86_64"
-  sha256 arm:   "d618a70f5350c7baa969e326fdeaf62a617db7f02de5eb2ee7cfb01ece1234d8",
-         intel: "fdd61d72f6590525ec52ac8b27e2b77bb40f3e2fcc5ae729dcd71f8581fe092d"
+  sha256 arm:   "b90f9ee212c50b879b6b34778c4f1027ac60a42b097c184e77fbb75db68e49d6",
+         intel: "b689fd513773c47443db75e8d80b25e756e32177e3bb0ab7f32d9471593bad05"
 
   url "https://github.com/paxel/oldbrainfix/releases/download/v#{version}/oldbrainfix-#{version}-macos-#{arch}.dmg"
   name "Old Brain Fix"
-  desc "Capture a thought in one tap, get nagged until it is sorted or done"
+  desc "Capture a thought in seconds, get nagged until it is sorted or done"
   homepage "https://github.com/paxel/oldbrainfix"
 
   app "Old Brain Fix.app"
