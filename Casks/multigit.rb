@@ -2,8 +2,8 @@
 # fills in the version and the sha256 of the release zip and pushes the result
 # to paxel/homebrew-tap as Casks/multigit.rb. Do not edit it there by hand.
 cask "multigit" do
-  version "0.3.0"
-  sha256 "f7e314169fccf3addfedb7273880063100444af7974b1e0d9065f98e6307945d"
+  version "0.4.0"
+  sha256 "7889e2f046c8159fe1177fa1a07064e928c8574cc5cdac936752c0595ef2e8ed"
 
   url "https://github.com/paxel/multigit/releases/download/v#{version}/multigit-#{version}-macos-universal.zip"
   name "multigit"
