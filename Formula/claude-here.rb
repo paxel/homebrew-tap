@@ -5,28 +5,28 @@
 class ClaudeHere < Formula
   desc "Run Claude Code in a project-scoped Docker sandbox with enforced git modes"
   homepage "https://github.com/paxel/claude-here"
-  version "0.4.1"
+  version "0.4.2"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/paxel/claude-here/releases/download/v0.4.1/claude_here-v0.4.1-aarch64-apple-darwin.tar.gz"
-      sha256 "dc0a033435da9a565b56492c06d691fd1e3a26748b3c1399948559f89140f875"
+      url "https://github.com/paxel/claude-here/releases/download/v0.4.2/claude_here-v0.4.2-aarch64-apple-darwin.tar.gz"
+      sha256 "58e13d55b22c04335a65d3924e1b6d9ac26c71e693c76c9297d18a33b49f862d"
     end
     on_intel do
-      url "https://github.com/paxel/claude-here/releases/download/v0.4.1/claude_here-v0.4.1-x86_64-apple-darwin.tar.gz"
-      sha256 "a989e6f5439e05608aea06df537495d9fe05559ab72edb23c3f7dcfcee87c721"
+      url "https://github.com/paxel/claude-here/releases/download/v0.4.2/claude_here-v0.4.2-x86_64-apple-darwin.tar.gz"
+      sha256 "79c458e941acafb55b2181101f3ab1902c5af667f667a84652ca592f15510ab8"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/paxel/claude-here/releases/download/v0.4.1/claude_here-v0.4.1-aarch64-unknown-linux-musl.tar.gz"
-      sha256 "076a1cf43492c1e563c83cbc15134f69b3c199f4d9e3e04bd6f3ecf46d5cb606"
+      url "https://github.com/paxel/claude-here/releases/download/v0.4.2/claude_here-v0.4.2-aarch64-unknown-linux-musl.tar.gz"
+      sha256 "b35a435e53cb23a95bc7e603e4fdce9bbf2c9de25f706570263252228c84cbaf"
     end
     on_intel do
-      url "https://github.com/paxel/claude-here/releases/download/v0.4.1/claude_here-v0.4.1-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "7064b4756db88a85444388de81c6afdb69ad4e0dff2bfd501bf326ee4f51d0b6"
+      url "https://github.com/paxel/claude-here/releases/download/v0.4.2/claude_here-v0.4.2-x86_64-unknown-linux-musl.tar.gz"
+      sha256 "60f92668accd5ad2583f6400ac7fea580917af2dc8dc6b2377f8a2921db75548"
     end
   end
 
