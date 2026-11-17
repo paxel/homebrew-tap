@@ -1,18 +1,18 @@
 class Pixpixpix < Formula
   desc "Fast keyboard-first image and video viewer"
   homepage "https://github.com/paxel/pixpixpix"
-  version "0.3.1"
+  version "0.4.0"
   license "MIT"
 
   depends_on :linux
 
   on_arm do
     url "https://github.com/paxel/pixpixpix/releases/download/v#{version}/pixpixpix-#{version}-linux-aarch64.tar.gz"
-    sha256 "93097480fe8c3584182c365231530517d6fd6a16ea9508d55195f643064f9236"
+    sha256 "20a5c1e42bfa87413c11321e18ca610af4305f9894df3bf324dc3eb452e4245c"
   end
   on_intel do
     url "https://github.com/paxel/pixpixpix/releases/download/v#{version}/pixpixpix-#{version}-linux-x86_64.tar.gz"
-    sha256 "ece2636bc1923c8ee651f1697b3d70b254ac1062d8584d87d72449126b654ab6"
+    sha256 "0d3f56f23d7cde59a750bd3fd8c361b38d950ec65a9910253d58e33a3957e9eb"
   end
 
   def install
