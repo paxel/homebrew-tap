@@ -1,18 +1,18 @@
 class Pixpixpix < Formula
   desc "Fast keyboard-first image and video viewer"
   homepage "https://github.com/paxel/pixpixpix"
-  version "0.4.0"
+  version "0.5.0"
   license "MIT"
 
   depends_on :linux
 
   on_arm do
     url "https://github.com/paxel/pixpixpix/releases/download/v#{version}/pixpixpix-#{version}-linux-aarch64.tar.gz"
-    sha256 "20a5c1e42bfa87413c11321e18ca610af4305f9894df3bf324dc3eb452e4245c"
+    sha256 "1ab1d898ae4553afa83e1905ba6a41470737e82021ea73ead4eababa1a4b7267"
   end
   on_intel do
     url "https://github.com/paxel/pixpixpix/releases/download/v#{version}/pixpixpix-#{version}-linux-x86_64.tar.gz"
-    sha256 "0d3f56f23d7cde59a750bd3fd8c361b38d950ec65a9910253d58e33a3957e9eb"
+    sha256 "b49ebb3f697abc817a86085cdc03e5791824bbf8dbdd3197d6e7a6be40d38222"
   end
 
   def install
@@ -60,8 +60,14 @@ class Pixpixpix < Formula
     <<~EOS
       pixpixpix loads some libraries from your distribution on first need:
       libturbojpeg for lossless JPEG turns, libheif for HEIC/HEIF and AVIF,
-      libmpv for videos (e.g. Debian/Ubuntu:
-      sudo apt install libturbojpeg libheif1 libheif-plugin-libde265 libheif-plugin-dav1d libmpv2).
+      libmpv for videos. To install them:
+
+        Fedora:
+          sudo dnf install mpv-libs libheif turbojpeg
+        Debian, Ubuntu:
+          sudo apt install libmpv2 libheif1 libheif-plugin-libde265 libheif-plugin-dav1d libturbojpeg
+        Arch:
+          sudo pacman -S mpv libheif libjpeg-turbo
 
       The install puts pixpixpix into your application menu and into "Open with"
       for images and videos, under ~/.local/share; it never becomes the default app.
