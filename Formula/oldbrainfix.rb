@@ -1,18 +1,18 @@
 class Oldbrainfix < Formula
   desc "Capture a thought in seconds, get nagged until it is sorted or done"
   homepage "https://github.com/paxel/oldbrainfix"
-  version "0.6.1"
+  version "0.7.1"
   license any_of: ["MIT", "Apache-2.0"]
 
   depends_on :linux
 
   on_arm do
     url "https://github.com/paxel/oldbrainfix/releases/download/v#{version}/oldbrainfix-#{version}-linux-arm64.tar.gz"
-    sha256 "cf65b52d7a9fd545aca0a634893df90081705331f6b701ae6f4f6053d6a40ca2"
+    sha256 "f07554f22b32e808d8a3a045ffe1f72ff4809b866dddcd31a9e47df42edb37bd"
   end
   on_intel do
     url "https://github.com/paxel/oldbrainfix/releases/download/v#{version}/oldbrainfix-#{version}-linux-x86_64.tar.gz"
-    sha256 "6999c2dfabf6a26fadf4792aab029506a416c2d4fd335e3211b48120f457f45f"
+    sha256 "802638ef57f68360f1f8e0c4948a350c60446d2565d3c030ed406987a955e76a"
   end
 
   def install
