@@ -4,9 +4,9 @@
 class Multigit < Formula
   desc "Desktop dashboard for many git repositories"
   homepage "https://github.com/paxel/multigit"
-  url "https://github.com/paxel/multigit/releases/download/v0.4.0/multigit-0.4.0-x86_64-linux.tar.gz"
-  version "0.4.0"
-  sha256 "10f58101b41399b6d276942a8abd484fbd05fd20a7512b33ba5badde77f6e0ab"
+  url "https://github.com/paxel/multigit/releases/download/v0.5.0/multigit-0.5.0-x86_64-linux.tar.gz"
+  version "0.5.0"
+  sha256 "8dedad9e2572534fc99df64006558304360783e9d3d42a8d134226f44814895c"
   license "MIT"
 
   # macOS gets the app through the cask of the same name.
