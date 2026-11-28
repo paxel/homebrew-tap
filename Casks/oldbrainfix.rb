@@ -1,9 +1,9 @@
 cask "oldbrainfix" do
-  version "0.8.0"
+  version "0.9.0"
 
   arch arm: "arm64", intel: "x86_64"
-  sha256 arm:   "e21c96dc8abaf6cb568dcf6f48d0d742486e2b6e912bc28b39406aeb2151564f",
-         intel: "c902d8eba62b6d122526c13b117c9df603cbc5e53d3b5e4b9ab687a9216960fc"
+  sha256 arm:   "a3c338a410c81ac5adc4a648f4d7284e96e8e55522f6d362f0828d85c164c2fd",
+         intel: "29527378cd61ceba373995b5fd0bdf23f81ae1e96490b18629f2342506c8e907"
 
   url "https://github.com/paxel/oldbrainfix/releases/download/v#{version}/oldbrainfix-#{version}-macos-#{arch}.dmg"
   name "Old Brain Fix"
